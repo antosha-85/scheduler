@@ -3,7 +3,7 @@ import DayList from "components/DayList"
 import "components/Application.scss";
 import Appointment from "components/Appointment";
 import axios from "axios";
-import getAppointmentForDay from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 
 
@@ -70,7 +70,8 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: 'Monday',
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   })
   const setDay = day => setState(state=>({ ...state, day }));
   // const setDays = function(days) {
@@ -79,18 +80,34 @@ export default function Application(props) {
   // }
   // const [day, setDay] = useState("Monday");
   
-    const appointmentList = getAppointmentForDay(state, state.day).map(appointment => <Appointment key={appointment.id} {...appointment} />);
+    // const appointmentList = getAppointmentForDay(state, state.day).map(appointment => <Appointment key={appointment.id} {...appointment} />);
     // const appointmentList = appointments.map(appointment => <Appointment key={appointment.id} {...appointment} />);
     
     // const [days, setDays] = useState([]);
+    const appointments = getAppointmentsForDay(state, state.day);
+
+    const schedule = appointments.map((appointment) => {
+      const interview = getInterview(state, appointment.interview);
+
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={interview}
+        />
+      );
+    });
+
     useEffect(() => { 
       Promise.all([
         axios.get(`http://localhost:8001/api/days`),
-        axios.get(`http://localhost:8001/api/appointments`)])
+        axios.get(`http://localhost:8001/api/appointments`),
+        axios.get(`http://localhost:8001/api/interviewers`)
+      ])
         .then((all)=> {
           // console.log(all)
-          setState(state => ({ days: all[0].data, appointments: all[1].data }));
-          // setState(state=>({ ...state, all[0],  }));
+          setState(state => ({ days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
         })
         .catch(err => {
           console.error('ERRRROROROROR', err)
@@ -120,7 +137,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-            {appointmentList}
+            {schedule}
             <Appointment key="last" time="5pm" />
         </section>
       
