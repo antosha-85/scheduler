@@ -79,11 +79,11 @@ storiesOf("Button", module)
       <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
     ));
 
-  const interviewer = {
-    id: 1,
-    name: "Sylvia Palmer",
-    avatar: "https://i.imgur.com/LpaY82x.png"
-  };
+  // const interviewer = {
+  //   id: 1,
+  //   name: "Sylvia Palmer",
+  //   avatar: "https://i.imgur.com/LpaY82x.png"
+  // };
   
   storiesOf("InterviewerListItem", module)
     .addParameters({
@@ -147,7 +147,7 @@ storiesOf("Button", module)
     .add("Appointment with Time", () => <Appointment time="12pm" />)
     .add("Header", () => <Header time="12pm" />)
     .add("Empty", () => <Empty onAdd={action('onAdd')}  />)
-    .add("Show", () => <Show onEdit={action("onEdit")} onDelete={action("onDelete")} />)
+    .add("Show", () => <Show onEdit={action("onEdit")} onDelete={action("onDelete")} interviewer={interviewer} student="Lydia Miller-Jones"/>)
     .add("Confirm", () => <Confirm onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
     .add("Saving", () => <Status message={'Saving'} />)
     .add("Deleting", () => <Status message={'Deleting'} />)
