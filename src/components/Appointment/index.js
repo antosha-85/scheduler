@@ -16,37 +16,37 @@ const SAVING = "SAVING";
 
 export default function Appointment(props) {
 
-    
-    function save (name, interviewer) {
-        if(name && interviewer) {
+
+    function save(name, interviewer) {
+        if (name && interviewer) {
             const interview = {
-              student: name,
-              interviewer
+                student: name,
+                interviewer
             }
             transition(SAVING);
             props.bookInterview(props.id, interview)
-            .then(() => transition(SHOW));
+                .then(() => transition(SHOW));
         }
-      }
+    }
 
     const { mode, transition, back } = useVisualMode(
         props.interview ? SHOW : EMPTY
-      );
+    );
 
-      console.log("TCL: Appointment -> appointment !!!! props", props)
+    console.log("TCL: Appointment -> appointment !!!! props", props)
     return (
         <article className="appointment">
-            <Header time={props.time}/>
+            <Header time={props.time} />
             {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
             {mode === SHOW && (
-            <Show
-                student={props.interview.student}
-                interviewer={props.interview.interviewer}
-            />
+                <Show
+                    student={props.interview.student}
+                    interviewer={props.interview.interviewer}
+                />
             )}
-            {mode === CREATE && (<Form interviewers={props.interviewers} 
-            onCancel={() => back()}
-            onSave={(name, interviewer) => {save(name, interviewer)}}/>)}
+            {mode === CREATE && (<Form interviewers={props.interviewers}
+                onCancel={() => back()}
+                onSave={(name, interviewer) => { save(name, interviewer) }} />)}
             {mode === SAVING && <Status message={'Saving the appointment'} />}
         </article>
     )
