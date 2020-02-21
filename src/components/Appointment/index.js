@@ -15,21 +15,25 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 
 export default function Appointment(props) {
+
     
     function save (name, interviewer) {
-        const interview = {
-          student: name,
-          interviewer
+        if(name && interviewer) {
+            const interview = {
+              student: name,
+              interviewer
+            }
+            transition(SAVING);
+            props.bookInterview(props.id, interview)
+            .then(() => transition(SHOW));
         }
-        transition(SAVING);
-        props.bookInterview(props.id, interview)
-        .then(() => transition(SHOW));
       }
 
     const { mode, transition, back } = useVisualMode(
         props.interview ? SHOW : EMPTY
       );
-    
+
+      console.log("TCL: Appointment -> appointment !!!! props", props)
     return (
         <article className="appointment">
             <Header time={props.time}/>

@@ -8,6 +8,7 @@ const interviewers = [
     { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
   ];
 export default function Header (props) {
+    console.log("TCL: Header -> props", props)
     return (
         <main className="appointment__card appointment__card--show">
             <section className="appointment__card-left">

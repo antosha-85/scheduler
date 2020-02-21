@@ -19,9 +19,9 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    setState({...state, 
-      appointments}
-      );
+    // setState({...state, 
+    //   appointments}
+    //   );
 
         
         return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)        
@@ -41,7 +41,7 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   })
-    console.log("TCL: Application -> state", state)
+    // console.log("TCL: Application -> state", state)
   
   const setDay = day => setState({ ...state, day });
   
@@ -72,7 +72,7 @@ export default function Application(props) {
       ])
       .then((all)=> {
         // console.log(all)
-        setState(state => ({ days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
+        setState(state => ({ ...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
       })
       .catch(err => {
         console.error('ERRRROROROROR', err)
