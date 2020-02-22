@@ -14,10 +14,10 @@ function reducer(state, action) {
       return { ...state, days: action.days, appointments: action.appointments, interviewers: action.interviewers }
     case BOOK_INTERVIEW: {
       return {...state,
-        appointments: action.appointments}}
+        appointments: action.appointments, days: action.days}}
     case CANCEL_INTERVIEW: {
       return {...state,
-        appointments: action.appointments}
+        appointments: action.appointments, days: action.days}
     }
     default:
       throw new Error(
@@ -61,9 +61,20 @@ export default function useApplicationData(initial) {
       ...state.appointments,
       [id]: appointment
     };
+
+    const days = [...state.days].map(day=>{
+       if(day.name === state.day) {
+        return {
+          ...day,
+          spots: day.spots - 1
+        }
+      }
+      return day
+    })
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
-        dispatch({ type: BOOK_INTERVIEW , appointments});
+        dispatch({ type: BOOK_INTERVIEW , appointments, days});
       })
   }
   function cancelInterview(id) {
@@ -77,9 +88,19 @@ export default function useApplicationData(initial) {
       [id]: appointment
     };
     
+    const days = [...state.days].map(day=>{
+      if(day.name === state.day) {
+       return {
+         ...day,
+         spots: day.spots +1
+       }
+     }
+     return day
+   })
+
     return axios.delete(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
-        dispatch({ type: CANCEL_INTERVIEW, appointments });
+        dispatch({ type: CANCEL_INTERVIEW, appointments, days });
       })
   }
 
