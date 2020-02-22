@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 
 export default function DayListItem(props) {
+    console.log("TCL: DayListItem -> props", props)
     function formatSpots (props) {
         if (props.spots === 0) {
             return `no spots remaining`;
