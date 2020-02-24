@@ -7,7 +7,6 @@ import { getInterviewersForDay } from "../helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
-console.log("TCL: Application -> props", props)
 
   const {
     state,

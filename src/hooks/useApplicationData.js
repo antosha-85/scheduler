@@ -35,7 +35,6 @@ const initialState = {
 
 export default function useApplicationData(initial) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log("TCL: useApplicationData -> state", state)
   const setDay = day => dispatch({ type: SET_DAY, day })
   useEffect(() => {
     Promise.all([
