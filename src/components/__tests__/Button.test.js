@@ -12,6 +12,7 @@ it("renders without crashing", () => {
 
 it.skip("renders its `children` prop as text", () => {
   const { getByText } = render(<Button>Default</Button>);
+  console.log("TCL: getByText", getByText)
   expect(getByText("Default")).toBeInTheDocument();
 });
 
