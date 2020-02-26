@@ -8,7 +8,7 @@ This is a single-page app built on React.js that allows users to book, edit or c
 ["Form when creating/editing an interview"](https://github.com/antosha-85/scheduler/blob/master/docs/Regular%20view.png?raw=true)
 ["Confirmation message before deleting an interview "](https://github.com/antosha-85/scheduler/blob/master/docs/Saving%20view.png?raw=true);
 
-# If you want to run the app locally
+## If you want to run the app locally
 1. Fork this repository, then clone your fork of this repository.
 2. Go to the scheduler-api repository that contains the database and fork it, then clone your fork of this repository.
 3. Install dependencies in both folders (scheduler & shceduler-api) using the npm install command.
