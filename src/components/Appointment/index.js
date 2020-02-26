@@ -78,7 +78,7 @@ export default function Appointment(props) {
             {mode === EDIT && <Form onCancel={() => back()} interviewers={props.interviewers} 
             onSave={(name, interviewer) => { save(name, interviewer) }  } 
             name={props.interview.student} 
-            interviewer={props.id}
+            interviewer={props.interview.interviewer.id}
             />}
 
             {mode === ERROR_SAVE && <Error message={'Error while saving'} 
