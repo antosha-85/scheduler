@@ -5,4 +5,5 @@ This is a single-page app built on React.js that allows users to book, edit or c
 ## Screenshots
 
 !["Regular view of appointments"](https://github.com/antosha-85/scheduler/blob/master/docs/Deleting%20view.png?raw=true)
-!["screenshot description"](https://github.com/antosha-85/tweeter/blob/master/Tweeter2.png)
+!["Form when creating/editing an interview"](https://github.com/antosha-85/scheduler/blob/master/docs/Regular%20view.png?raw=true)
+!["Confirmation message before deleting an interview "](https://github.com/antosha-85/scheduler/blob/master/docs/Saving%20view.png?raw=true)
