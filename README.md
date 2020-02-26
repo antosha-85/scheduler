@@ -4,5 +4,5 @@ This is a single-page app built on React.js that allows users to book, edit or c
 
 ## Screenshots
 
-!["Regular view of appointments"](docs/Deleting view.png)
+!["Regular view of appointments"](https://github.com/antosha-85/scheduler/blob/master/docs/Deleting%20view.png?raw=true)
 !["screenshot description"](https://github.com/antosha-85/tweeter/blob/master/Tweeter2.png)
