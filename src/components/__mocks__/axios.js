@@ -87,7 +87,20 @@ export default {
             return Promise.resolve({
                 status: 204,
                 statusText: "No content"
-                // data: fixtures.days
+            });
+        }
+        if (url === "/api/appointments/2") {
+            return Promise.resolve({
+                status: 204,
+                statusText: "No content"
+            });
+        }
+    }),
+    delete: jest.fn(url => {
+        if (url === "/api/appointments/2") {
+            return Promise.resolve({
+                status: 204,
+                statusText: "No content"
             });
         }
     })
